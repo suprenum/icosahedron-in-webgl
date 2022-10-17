@@ -15,6 +15,111 @@ import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js'
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js'
 
+
+
+
+
+
+
+
+
+
+
+(function () {
+    const items = document.querySelectorAll(".timeline-section li");
+  
+    function isElementInViewport(el) {
+      let rect = el.getBoundingClientRect();
+      return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <=
+          (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      );
+    }
+  
+    function slideIn() {
+      for (let i = 0; i < items.length; i++) {
+        if (isElementInViewport(items[i])) {
+          items[i].classList.add("slide-in");
+        } else {
+          items[i].classList.remove("slide-in");
+        }
+      }
+    }
+  
+    window.addEventListener("load", slideIn);
+    window.addEventListener("scroll", slideIn);
+    window.addEventListener("resize", slideIn);
+
+    
+  })();
+  
+
+document.querySelectorAll('.accordion__button').forEach(button =>{
+  
+  button.addEventListener('click', () => {
+    console.log("fdsfds");
+    const accordionContent = button.parentElement.nextElementSibling;
+    button.classList.toggle("accordion__button--active");
+    const servicesContent = button.parentElement;
+    
+    if(button.classList.contains("accordion__button--active")){
+      accordionContent.style.maxHeight = accordionContent.scrollHeight +  "px";
+      servicesContent.classList.add("services-list-item--active");
+      servicesContent.classList.remove("services-list-item--closed");
+    }
+    else{
+      accordionContent.style.maxHeight = 0;
+      servicesContent.classList.remove("services-list-item--active");
+      servicesContent.classList.add("services-list-item--closed");
+    }
+  })
+});
+
+// var modal = document.querySelector(".modal");
+//     var trigger = document.querySelector(".trigger");
+//     var closeButton = document.querySelector(".close-button");
+
+//     function toggleModal() {
+//         modal.classList.toggle("show-modal");
+//     }
+
+//     function windowOnClick(event) {
+//         if (event.target === modal) {
+//             toggleModal();
+//         }
+//     }
+
+//     trigger.addEventListener("click", toggleModal);
+//     closeButton.addEventListener("click", toggleModal);
+//     window.addEventListener("click", windowOnClick);
+
+//   window.onscroll = function() {myFunction()};
+
+// let header = document.getElementById("myHeader");
+// let sticky = header.offsetTop;
+
+// function myFunction() {
+//   if (window.pageYOffset > sticky) {
+//     header.classList.add("sticky");
+//   } else {
+//     header.classList.remove("sticky");
+//   }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
 /**
  * Base
  */
@@ -35,12 +140,12 @@ landscapeTexture.wrapT = THREE.MirroredRepeatWrapping
  */
 const gui = new Guify({
 	align: 'right',
-	theme: 'dark',
+	theme: 'light',
 	width: '400px',
 	barMode: 'none',
 })
 const guiDummy = {}
-guiDummy.clearColor = '#111111'
+guiDummy.clearColor = '#ebebeb'
 
 /**
  * Icosahedron
@@ -119,16 +224,16 @@ scene.add(icosahedronLines.mesh)
  * Sizes
  */
 const sizes = {
-	width: window.innerWidth,
-	height: window.innerHeight,
-	pixelRatio: Math.min(window.devicePixelRatio, 2),
+	width: 500,
+	height: 500,
+	pixelRatio: Math.min(window.devicePixelRatio),
 }
 
 window.addEventListener('resize', () => {
 	// Update sizes
 	sizes.width = window.innerWidth
 	sizes.height = window.innerHeight
-	sizes.pixelRatio = Math.min(window.devicePixelRatio, 2)
+	sizes.pixelRatio = Math.min(window.devicePixelRatio)
 
 	// Update camera
 	camera.aspect = sizes.width / sizes.height
@@ -163,10 +268,10 @@ controls.enableDamping = true
 const renderer = new THREE.WebGLRenderer({
 	canvas: canvas,
 })
-renderer.setClearColor(guiDummy.clearColor, 1)
+renderer.setClearColor(guiDummy.clearColor, 0)
 renderer.outputEncoding = THREE.sRGBEncoding
 renderer.setSize(sizes.width, sizes.height)
-renderer.setPixelRatio(sizes.pixelRatio)
+// renderer.setPixelRatio(sizes.pixelRatio)
 
 gui.Register({
 	type: 'folder',
@@ -250,8 +355,8 @@ const tick = () => {
 	controls.update()
 
 	// Render
-	// renderer.render(scene, camera)
-	effectComposer.render()
+	renderer.render(scene, camera)
+	// effectComposer.render()
 
 	// Call tick again on the next frame
 	window.requestAnimationFrame(tick)

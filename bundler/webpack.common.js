@@ -61,17 +61,16 @@ module.exports = {
                 [
                     {
                         loader: 'file-loader',
-                        options:
-                        {
-                            outputPath: 'assets/images/'
-                        }
+                        // options: {
+                        //     outputPath: 'src/img/'
+                        //   },
                     }
                 ]
             },
 
             // Fonts
             {
-                test: /\.(ttf|eot|woff|woff2)$/,
+                test: /\.(ttf|eot|woff|woff2|otf)$/,
                 use:
                 [
                     {
