@@ -650,6 +650,10 @@ a{
 }
 
 .accordion__content{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
     margin-top: -50px;
     overflow: hidden;
     max-height: 0px;
@@ -658,13 +662,14 @@ a{
 
 .accordion-content-text{
     /* min-height: 280px; */
+    max-width: 800px;
     font-family: 'Roboto';
-    margin-top: 0px;
-    margin-bottom: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     font-style: normal;
     text-align: center;;
     font-weight: 400;
-    font-size: 25px;
+    font-size: 28px;
     line-height: 30px;
     letter-spacing: 0.035em;
     color: #122438;
@@ -726,9 +731,11 @@ background-size: cover !important;
 }
 
 .img-roll{
+    /* max-width: 1000px; */
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 40px;
 }
 
@@ -737,6 +744,10 @@ background-size: cover !important;
     min-height: 200px;
     margin-bottom: 40px;
     border-radius: 20px;
+}
+
+.img-roll-img:not(:last-child){
+    margin-right: 70px;
 }
 
 .projects{
