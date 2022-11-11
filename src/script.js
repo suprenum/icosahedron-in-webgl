@@ -141,11 +141,11 @@ landscapeTexture.wrapT = THREE.MirroredRepeatWrapping
 const gui = new Guify({
 	align: 'right',
 	theme: 'light',
-	width: '400px',
+	width: '1px',
 	barMode: 'none',
 })
 const guiDummy = {}
-guiDummy.clearColor = '#ebebeb'
+guiDummy.clearColor = '#EAEAEA'
 
 /**
  * Icosahedron
@@ -224,8 +224,8 @@ scene.add(icosahedronLines.mesh)
  * Sizes
  */
 const sizes = {
-	width: 500,
-	height: 500,
+	width: 900,
+	height: 900,
 	pixelRatio: Math.min(window.devicePixelRatio),
 }
 
@@ -233,7 +233,7 @@ window.addEventListener('resize', () => {
 	// Update sizes
 	sizes.width = window.innerWidth
 	sizes.height = window.innerHeight
-	sizes.pixelRatio = Math.min(window.devicePixelRatio)
+	// sizes.pixelRatio = Math.min(window.devicePixelRatio)
 
 	// Update camera
 	camera.aspect = sizes.width / sizes.height
@@ -271,7 +271,7 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setClearColor(guiDummy.clearColor, 0)
 renderer.outputEncoding = THREE.sRGBEncoding
 renderer.setSize(sizes.width, sizes.height)
-// renderer.setPixelRatio(sizes.pixelRatio)
+renderer.setPixelRatio(sizes.pixelRatio)
 
 gui.Register({
 	type: 'folder',
