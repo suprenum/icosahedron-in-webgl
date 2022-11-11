@@ -589,12 +589,14 @@ a{
     justify-content: center;
     align-items: center;
     list-style: none;
+    
+    overflow-x:visible;
 }
 
 .services-list-item{
     position: relative;
-    width: 1920px;
-    overflow-x: hidden;
+    min-width: 100%;
+    /* overflow-x: hidden; */
     /* margin-bottom: 30px; */
     height: 1000px;
     display: flex;
@@ -694,7 +696,7 @@ background-attachment: fixed !important;
 /* position: static !important; */
 /* z-index: -1 !important; */
 
-width: 1920px;
+width: 100%;
     overflow-x: hidden;
     /* margin-bottom: 30px; */
     height: 1000px;
@@ -755,7 +757,7 @@ background-size: cover !important;
 background-repeat: no-repeat;
 background-attachment: fixed !important;
 background-position: center bottom;
-background-size: cover; 
+background-size: cover !important; 
 
 
 }
