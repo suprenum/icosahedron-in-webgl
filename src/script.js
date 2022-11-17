@@ -1,7 +1,7 @@
 import './style.css'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import Guify from 'guify'
+// import Guify from 'guify'
 import icosahedronVertexShader from './shaders/icosahedron/vertex.glsl'
 import icosahedronFragmentShader from './shaders/icosahedron/fragment.glsl'
 
@@ -135,17 +135,17 @@ const landscapeTexture = textureLoader.load('/textures/1.jpg')
 landscapeTexture.wrapS = THREE.MirroredRepeatWrapping
 landscapeTexture.wrapT = THREE.MirroredRepeatWrapping
 
-/**
- * Debug
- */
-const gui = new Guify({
-	align: 'right',
-	theme: 'light',
-	width: '1px',
-	barMode: 'none',
-})
-const guiDummy = {}
-guiDummy.clearColor = '#EAEAEA'
+// /**
+//  * Debug
+//  */
+// const gui = new Guify({
+// 	align: 'right',
+// 	theme: 'light',
+// 	width: '1px',
+// 	barMode: 'none',
+// })
+// const guiDummy = {}
+// guiDummy.clearColor = '#EAEAEA'
 
 /**
  * Icosahedron
@@ -170,16 +170,16 @@ icosahedron.material = new THREE.ShaderMaterial({
 icosahedron.mesh = new THREE.Mesh(icosahedron.geometry, icosahedron.material)
 scene.add(icosahedron.mesh)
 
-// Mouse speed
-let mouse = 0
-let lastX = 0
-let lastY = 0
-let speed = 0
-document.addEventListener('mousemove', (e) => {
-	speed = Math.sqrt((e.pageX - lastX) ** 2 + (e.pageY - lastY) ** 2) * 0.1
-	lastX = e.pageX
-	lastY = e.pageY
-})
+// // Mouse speed
+// let mouse = 0
+// let lastX = 0
+// let lastY = 0
+// let speed = 0
+// document.addEventListener('mousemove', (e) => {
+// 	speed = Math.sqrt((e.pageX - lastX) ** 2 + (e.pageY - lastY) ** 2) * 0.1
+// 	lastX = e.pageX
+// 	lastY = e.pageY
+// })
 
 /**
  * Icosahedron lines
@@ -223,17 +223,17 @@ scene.add(icosahedronLines.mesh)
 /**
  * Sizes
  */
-const sizes = {
-	width: 900,
-	height: 900,
-	pixelRatio: Math.min(window.devicePixelRatio),
-}
+const sizes = {}
+
+sizes.width = window.innerWidth
+sizes.height = window.innerHeight
+sizes.pixelRatio = Math.min(window.devicePixelRatio, 2)
 
 window.addEventListener('resize', () => {
 	// Update sizes
 	sizes.width = window.innerWidth
 	sizes.height = window.innerHeight
-	// sizes.pixelRatio = Math.min(window.devicePixelRatio)
+	// sizes.pixelRatio = Math.min(Math.max(window.devicePixelRatio, 1.5), 2)
 
 	// Update camera
 	camera.aspect = sizes.width / sizes.height
@@ -254,12 +254,13 @@ const camera = new THREE.PerspectiveCamera(
 	0.001,
 	1000
 )
-camera.position.set(0, 0, 3)
+camera.position.set(0, 0, 2.8)
 scene.add(camera)
 
 // Controls
 const controls = new OrbitControls(camera, canvas)
 controls.enableDamping = true
+controls.enableZoom = false
 
 /**
  * Renderer
@@ -268,28 +269,28 @@ controls.enableDamping = true
 const renderer = new THREE.WebGLRenderer({
 	canvas: canvas,
 })
-renderer.setClearColor(guiDummy.clearColor, 0)
+renderer.setClearColor(0xEAEAEA, 1)
 renderer.outputEncoding = THREE.sRGBEncoding
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(sizes.pixelRatio)
 
-gui.Register({
-	type: 'folder',
-	label: 'renderer',
-	open: true,
-})
+// gui.Register({
+// 	type: 'folder',
+// 	label: 'renderer',
+// 	open: true,
+// })
 
-gui.Register({
-	folder: 'renderer',
-	object: guiDummy,
-	property: 'clearColor',
-	type: 'color',
-	label: 'clearColor',
-	format: 'hex',
-	onChange: () => {
-		renderer.setClearColor(guiDummy.clearColor, 1)
-	},
-})
+// gui.Register({
+// 	folder: 'renderer',
+// 	object: guiDummy,
+// 	property: 'clearColor',
+// 	type: 'color',
+// 	label: 'clearColor',
+// 	format: 'hex',
+// 	onChange: () => {
+// 		renderer.setClearColor(guiDummy.clearColor, 1)
+// 	},
+// })
 
 /**
  * Post-processing
@@ -341,14 +342,14 @@ const tick = () => {
 	icosahedronLines.mesh.rotation.x = elapsedTime * 0.05
 	icosahedronLines.mesh.rotation.y = elapsedTime * 0.05
 
-	// Update mouse
-	mouse -= (mouse - speed) * 0.05
-	speed *= 0.99
-	icosahedron.material.uniforms.uMouse.value = mouse
-	icosahedronLines.material.uniforms.uMouse.value = mouse
+	// // Update mouse
+	// mouse -= (mouse - speed) * 0.05
+	// speed *= 0.99
+	// icosahedron.material.uniforms.uMouse.value = mouse
+	// icosahedronLines.material.uniforms.uMouse.value = mouse
 
 	pixelPass.uniforms.uTime.value = elapsedTime
-	pixelPass.uniforms.uMaxRgbShift.value = mouse / 5
+	// pixelPass.uniforms.uMaxRgbShift.value = mouse / 5
 	// PixelShader.uniforms.uMaxRgbShift.value = mouse / 5
 
 	// Update controls
