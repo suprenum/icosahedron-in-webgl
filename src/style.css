@@ -1295,8 +1295,8 @@ time {
 
     .webgl {
         max-width: 300px;
-        max-height: 300px;
-        margin: 0;
+        max-height: 400px;
+        transform: none;
     }
 
     .information-div {
