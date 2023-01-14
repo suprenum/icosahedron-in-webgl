@@ -24,7 +24,6 @@ import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js'
 
 
 
-
 (function () {
     const items = document.querySelectorAll(".timeline-section li");
   
@@ -76,7 +75,85 @@ document.querySelectorAll('.accordion__button').forEach(button =>{
       servicesContent.classList.add("services-list-item--closed");
     }
   })
+
+  
+
 });
+
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[2];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "flex";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+	modal.style.display = "none";
+  }
+} 	
+
+var modal2 = document.getElementById("myModal1");
+
+// Get the button that opens the modal
+var btn2 = document.getElementById("myBtn1");
+
+// Get the <span> element that closes the modal
+var span2 = document.getElementsByClassName("close")[1];
+
+// When the user clicks on the button, open the modal
+btn2.onclick = function() {
+  modal2.style.display = "flex";
+}
+
+// When the user clicks on <span> (x), close the modal
+span2.onclick = function() {
+  modal2.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal2) {
+	modal2.style.display = "none";
+  }
+} 
+
+var modal1 = document.getElementById("promoModal");
+
+// Get the button that opens the modal
+var btn1 = document.getElementById("promoButton");
+
+// Get the <span> element that closes the modal
+var span1 = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn1.onclick = function() {
+  modal1.style.display = "flex";
+}
+
+// When the user clicks on <span> (x), close the modal
+span1.onclick = function() {
+  modal1.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal1) {
+	modal1.style.display = "none";
+  }
+} 	
 
 // var modal = document.querySelector(".modal");
 //     var trigger = document.querySelector(".trigger");
@@ -271,7 +348,7 @@ const renderer = new THREE.WebGLRenderer({
 })
 renderer.setClearColor(0xEAEAEA, 1)
 renderer.outputEncoding = THREE.sRGBEncoding
-renderer.setSize(sizes.width, sizes.height)
+renderer.setSize(sizes.width, sizes.height )
 renderer.setPixelRatio(sizes.pixelRatio)
 
 // gui.Register({
