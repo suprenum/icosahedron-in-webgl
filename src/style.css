@@ -923,6 +923,10 @@ a {
     border-right: 1px solid #77777777;
 }
 
+.video-pointer{
+    display: none;
+}
+
 
 /* Past Events */
 .past-events-title {
@@ -967,6 +971,8 @@ a {
 .timeline-item {
     margin: 0;
 }
+
+
 
 .myBtn:hover{
     cursor: pointer;
@@ -1631,7 +1637,9 @@ color: #E5E5E5;
         display: none;
     }
 
-    
+    .video-pointer{
+        display: block;
+    }
     /* .accordion__content */
 
 }
