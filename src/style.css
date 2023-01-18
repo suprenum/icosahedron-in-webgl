@@ -214,9 +214,9 @@ a {
     display: inline-block;
     max-width: 100%;
     padding-top: 10px;
-    margin-left: auto;
+    /* margin-left: auto; */
     text-align: center;
-    margin-right: auto;
+    /* margin-right: auto; */
 }
 
 
