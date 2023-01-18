@@ -210,12 +210,12 @@ a {
 }
 
 .past-events-link {
-	display: inline-block;
-	max-width: 100%;
+	/* display: inline-block; */
+	max-width: 200px;
 	padding-top: 10px;
-	/* margin-left: auto; */
+	margin-left: auto;
 	text-align: center;
-	/* margin-right: auto; */
+	margin-right: auto;
 }
 
 .hover-underline-animation:hover:after {
@@ -294,6 +294,7 @@ a {
 	margin-top: 38px;
 	padding-left: auto;
 	padding-right: auto;
+    /* padding-top: 10%; */
 	font-family: 'Roboto Mono';
 	font-style: normal;
 	font-weight: 700;
