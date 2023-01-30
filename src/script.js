@@ -201,16 +201,23 @@ window.onclick = function(event) {
 
 // pause the video when click close span
 
-let iframe = document.querySelector('iframe'),
-	closeVideoBtn = document.querySelector('span.close')
+const closeVideoBtns = document.querySelectorAll('.close')
 
-closeVideoBtn.addEventListener('click', () =>
+closeVideoBtns.forEach(btn =>
 {
-	if (iframe)
+	btn.addEventListener('click', (e) =>
 	{
-		let iframeSrc = iframe.src
-		iframe.src =  iframeSrc
-	}
+		let iframes = document.querySelectorAll('iframe') || document.querySelectorAll('iframe.iQanat1-video')
+		iframes.forEach(iframe =>
+		{
+			if (iframe)
+			{
+				console.log(iframe)
+				let iframeSrc = iframe.src
+				iframe.src =  iframeSrc
+			}
+		})
+	})
 })
 
 
