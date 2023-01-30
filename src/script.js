@@ -199,7 +199,19 @@ window.onclick = function(event) {
 
 
 
+// pause the video when click close span
 
+let iframe = document.querySelector('iframe'),
+	closeVideoBtn = document.querySelector('span.close')
+
+closeVideoBtn.addEventListener('click', () =>
+{
+	if (iframe)
+	{
+		let iframeSrc = iframe.src
+		iframe.src =  iframeSrc
+	}
+})
 
 
 
