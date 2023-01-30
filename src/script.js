@@ -207,7 +207,7 @@ closeVideoBtns.forEach(btn =>
 {
 	btn.addEventListener('click', (e) =>
 	{
-		let iframes = document.querySelectorAll('iframe') || document.querySelectorAll('iframe.iQanat1-video')
+		let iframes = document.querySelectorAll('iframe')
 		iframes.forEach(iframe =>
 		{
 			if (iframe)
