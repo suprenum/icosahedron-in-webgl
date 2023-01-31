@@ -124,6 +124,15 @@
         window.onclick = function(event) {
             if (event.target == modal1) {
                 modal1.style.display = "none";
+                let iframes = document.querySelectorAll('iframe')
+                iframes.forEach(iframe =>
+                {
+                    if (iframe)
+                    {
+                        let iframeSrc = iframe.src
+                        iframe.src =  iframeSrc
+                    }
+                })
             }
         }
 
@@ -140,7 +149,6 @@
                 {
                     if (iframe)
                     {
-                        console.log(iframe)
                         let iframeSrc = iframe.src
                         iframe.src =  iframeSrc
                     }

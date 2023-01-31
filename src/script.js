@@ -163,6 +163,12 @@ span1.onclick = function() {
 window.onclick = function(event) {
   if (event.target == modal1) {
 	modal1.style.display = "none";
+	let iframe = document.querySelector('iframe')
+	if (iframe)
+	{
+		let iframeSrc = iframe.src
+		iframe.src =  iframeSrc
+	}
   }
 } 	
 
@@ -212,7 +218,6 @@ closeVideoBtns.forEach(btn =>
 		{
 			if (iframe)
 			{
-				console.log(iframe)
 				let iframeSrc = iframe.src
 				iframe.src =  iframeSrc
 			}
@@ -220,8 +225,27 @@ closeVideoBtns.forEach(btn =>
 	})
 })
 
+const modalWindows = document.querySelectorAll('.modal')
 
-
+window.addEventListener('click', (e) =>
+{
+	modalWindows.forEach(modal =>
+	{
+		if (e.target === modal)
+		{
+			modal.style.display = 'none'
+		}
+		let iframes = document.querySelectorAll('iframe')
+		iframes.forEach(iframe =>
+		{
+			if (iframe)
+			{
+				let iframeSrc = iframe.src
+				iframe.src =  iframeSrc
+			}
+		})
+	})
+})
 
 
 
