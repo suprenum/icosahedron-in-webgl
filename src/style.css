@@ -1242,10 +1242,12 @@ time {
 	display: flex;
 	flex-direction: column;
 }
-
+.header-white
+{
+	background-color: #fff;
+}
 .main
 {
-	background-color: #EAEAEA;
 	flex: 1 1 auto;
 	font-family: 'Roboto';
 }
